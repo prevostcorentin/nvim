@@ -10,9 +10,8 @@ return {
         "ansible-language-server",
         -- "bash-debug-adapter",
         "bash-language-server",
-        -- "beautysh",
         "dockerfile-language-server",
-        -- "shellharden",
+        "shellharden",
         "shellcheck",
 
         -- application development stuff
@@ -22,19 +21,32 @@ return {
         "pyright",
 
         -- miscellaneous
-        -- "jsonlint",
-        -- "markdownlint",
+        -- "markdownlint"
         "yaml-language-server",
         "json-lsp",
         "yamlfmt",
-        -- "yamllint",
       },
     },
+  },
+
+  ["prevostcorentin/nvim-yawn"] = {
+    disable = false,
   },
 
   ["tpope/vim-fugitive"] = {
     config = function()
       require "custom.plugins.configs.fugitive"
+    end,
+  },
+
+  ["mfussenegger/nvim-dap"] = {
+    opt = true,
+    keys = "<LEADER>d",
+    config = function()
+      require "custom.plugins.configs.nvim-dap"
+    end,
+    setup = function()
+      require("core.utils").load_mappings "dap"
     end,
   },
 

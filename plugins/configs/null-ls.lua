@@ -9,11 +9,16 @@ local null_ls_augroup = vim.api.nvim_create_augroup("null_ls", { clear = false }
 null_ls.setup {
   debug = true,
   sources = {
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.autoflake,
+    -- bash
     null_ls.builtins.formatting.shellharden,
     null_ls.builtins.code_actions.shellcheck,
+    -- lua
+    null_ls.builtins.formatting.stylua,
+    -- python
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.autoflake,
+    -- yaml
+    null_ls.builtins.formatting.yamlfmt,
   },
   on_attach = function(client, bufnr)
     if true == client.server_capabilities.documentFormattingProvider then

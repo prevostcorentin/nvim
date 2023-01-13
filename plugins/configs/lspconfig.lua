@@ -1,20 +1,20 @@
 local present, lspconfig = pcall(require, "lspconfig")
 
-local utils = require "core.utils"
-
 if not present then
   return
 end
 
+local utils = require "core.utils"
+local yawn = require "yawn"
+
 local lsp_augroup = vim.api.nvim_create_augroup("lsp", { clear = true })
 
-local on_attach_callback = function(client, bufnr)
+---@diagnostic disable-next-line: unused-local
+local on_configure_client_buffer = function(client, bufnr)
   utils.load_mappings("lspconfig", { buffer = bufnr })
-
   if true == client.server_capabilities.signatureHelpProvider then
     require("nvchad_ui.signature").setup(client)
   end
-
   vim.api.nvim_clear_autocmds { group = lsp_augroup, buffer = bufnr }
   if true == client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -26,10 +26,6 @@ local on_attach_callback = function(client, bufnr)
     callback = vim.lsp.buf.clear_references,
     group = lsp_augroup,
   })
-  vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
-    callback = vim.diagnostic.open_float,
-    group = lsp_augroup,
-  })
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = vim.diagnostic.setloclist,
     group = lsp_augroup,
@@ -37,7 +33,7 @@ local on_attach_callback = function(client, bufnr)
 end
 
 lspconfig.ansiblels.setup {
-  on_attach = on_attach_callback,
+  on_attach = on_configure_client_buffer,
   ansible = {
     ansible = {
       path = "ansible",
@@ -57,17 +53,27 @@ lspconfig.ansiblels.setup {
     },
   },
 }
-lspconfig.bashls.setup { on_attach = on_attach_callback }
-lspconfig.dockerls.setup { on_attach = on_attach_callback }
-lspconfig.jsonls.setup { on_attach = on_attach_callback }
+lspconfig.bashls.setup { on_attach = on_configure_client_buffer }
+lspconfig.dockerls.setup { on_attach = on_configure_client_buffer }
+lspconfig.jsonls.setup { on_attach = on_configure_client_buffer }
 lspconfig.pyright.setup {
-  on_attach = on_attach_callback,
-  python = {
-    analysis = {
-      autoSearchPaths = true,
-      diagnosticMode = "workspace",
-      useLibraryCodeForTypes = true,
+  on_attach = function(client, bufnr)
+    on_configure_client_buffer(client, bufnr)
+    if yawn.python.has_venv() then
+      client.config.settings.python.pythonPath = yawn.python.find_interpreter()
+      client.config.settings.python.venvPath = yawn.python.find_venv()
+      client.notify "workspace/didChangeConfiguration"
+    end
+  end,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = "basic",
+      },
     },
   },
 }
-lspconfig.yamlls.setup { on_attach = on_attach_callback }
+lspconfig.yamlls.setup { on_attach = on_configure_client_buffer }

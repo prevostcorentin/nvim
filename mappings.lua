@@ -42,6 +42,31 @@ return {
     },
   },
 
+  dap = {
+    plugin = true,
+
+    n = {
+      ["<LEADER>dc"] = {
+        function()
+          require("dap").continue()
+        end,
+        "Continue debugging",
+      },
+      ["<LEADER>db"] = {
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+        "Toggle breakpoint",
+      },
+      ["<LEADER>dr"] = {
+        function()
+          require("dap").repl.open()
+        end,
+        "Display debugger REPL",
+      },
+    },
+  },
+
   lspconfig = {
     plugin = true,
 
