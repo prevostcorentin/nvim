@@ -22,7 +22,7 @@ return {
     },
 
     n = {
-      ["L"] = {"$", "Go to the end of the line"},
+      ["L"] = {"g_", "Go to the end of the line"},
       ["H"] = {"0", "Go to the beginning of the line"},
       ["!"] = {"<CMD> w <CR>", "Save current buffer"},
       ["<C-s>l"] = {"<CMD> rightbelow vnew <CR>", "Open split to the right"},
@@ -52,12 +52,6 @@ return {
         end
         ,"Go to symbol definition"
       },
-      -- ["<LEADER>li"] = {
-      --   function()
-      --     vim.lsp.buf.implementation()
-      --   end,
-      --   "Go to symbol implementation"
-      -- },
       ["<LEADER>lf"] = {
         function ()
           vim.lsp.buf.references()
