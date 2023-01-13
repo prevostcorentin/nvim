@@ -32,6 +32,12 @@ return {
     },
   },
 
+  ["tpope/vim-fugitive"] = {
+    config = function()
+      require "custom.plugins.configs.fugitive"
+    end,
+  },
+
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
