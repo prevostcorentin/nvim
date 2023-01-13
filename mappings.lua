@@ -46,6 +46,11 @@ return {
     plugin = true,
 
     n = {
+      ["<LEADER>lc"] = {
+        function()
+          vim.lsp.buf.code_action()
+        end,
+      },
       ["<LEADER>ld"] = {
         function()
           vim.lsp.buf.definition()
@@ -74,13 +79,13 @@ return {
         function()
           vim.lsp.buf.incoming_calls()
         end,
-        "List calls of the symbol",
+        "List symbols incoming calls",
       },
       ["<LEADER>lo"] = {
         function()
-          vim.lsp.buf.incoming_calls()
+          vim.lsp.buf.outgoing_calls()
         end,
-        "List symbols called by the selected symbol",
+        "List symbols outgoing calls",
       },
       ["<LEADER>lj"] = {
         function()
