@@ -8,6 +8,7 @@ M.ui = {
 }
 
 M.mappings = require "custom.mappings"
+---@diagnostic disable-next-line: different-requires
 M.plugins = require "custom.plugins"
 
 return M
