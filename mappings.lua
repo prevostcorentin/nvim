@@ -6,94 +6,94 @@ return {
       ["0"] = "",
     },
     i = {
-      ["<ESC>"] = ""
+      ["<ESC>"] = "",
     },
     v = {
-      ["<ESC>"] = ""
-    }
+      ["<ESC>"] = "",
+    },
   },
 
   user = {
     i = {
-      ["jk"] = {"<ESC>", "Leave insert mode"},
-      ["Jk"] = {"<ESC>", "Leave insert mode"},
-      ["jK"] = {"<ESC>", "Leave insert mode"},
-      ["JK"] = {"<ESC>", "Leave insert mode"},
+      ["jk"] = { "<ESC>", "Leave insert mode" },
+      ["Jk"] = { "<ESC>", "Leave insert mode" },
+      ["jK"] = { "<ESC>", "Leave insert mode" },
+      ["JK"] = { "<ESC>", "Leave insert mode" },
     },
 
     n = {
-      ["L"] = {"g_", "Go to the end of the line"},
-      ["H"] = {"0", "Go to the beginning of the line"},
-      ["!"] = {"<CMD> w <CR>", "Save current buffer"},
-      ["<C-s>l"] = {"<CMD> rightbelow vnew <CR>", "Open split to the right"},
-      ["<C-s>h"] = {"<CMD> leftabove vnew <CR>", "Open split to the left"},
-      ["<C-s>j"] = {"<CMD> rightbelow new <CR>", "Open split to the top"},
-      ["<C-s>k"] = {"<CMD> rightbelow new <CR>", "Open split to the bottom"},
+      ["L"] = { "g_", "Go to the end of the line" },
+      ["H"] = { "0", "Go to the beginning of the line" },
+      ["!"] = { "<CMD> w <CR>", "Save current buffer" },
+      ["<C-s>l"] = { "<CMD> rightbelow vnew <CR>", "Open split to the right" },
+      ["<C-s>h"] = { "<CMD> leftabove vnew <CR>", "Open split to the left" },
+      ["<C-s>j"] = { "<CMD> rightbelow new <CR>", "Open split to the top" },
+      ["<C-s>k"] = { "<CMD> rightbelow new <CR>", "Open split to the bottom" },
     },
 
     v = {
-      ["jk"] = {"<ESC>", "Leave visual mode"},
-      ["Jk"] = {"<ESC>", "Leave visual mode"},
-      ["jK"] = {"<ESC>", "Leave visual mode"},
-      ["JK"] = {"<ESC>", "Leave visual mode"},
-      ["L"] = {"$", "Go to the end of the line"},
-      ["H"] = {"0", "Go to the beginning of the line" },
-      ['<LEADER>"'] = {'<ESC>`<i"<ESC>`>la"<ESC>', "Quote selection"}
+      ["jk"] = { "<ESC>", "Leave visual mode" },
+      ["Jk"] = { "<ESC>", "Leave visual mode" },
+      ["jK"] = { "<ESC>", "Leave visual mode" },
+      ["JK"] = { "<ESC>", "Leave visual mode" },
+      ["L"] = { "g_", "Go to the end of the line" },
+      ["H"] = { "0", "Go to the beginning of the line" },
+      ['<LEADER>"'] = { '<ESC>`<i"<ESC>`>la"<ESC>', "Quote selection" },
     },
   },
 
-  lsp = {
-    -- plugin = true,
+  lspconfig = {
+    plugin = true,
 
     n = {
       ["<LEADER>ld"] = {
         function()
           vim.lsp.buf.definition()
-        end
-        ,"Go to symbol definition"
+        end,
+        "Go to symbol definition",
       },
       ["<LEADER>lf"] = {
-        function ()
+        function()
           vim.lsp.buf.references()
         end,
-        "Find symbol references"
+        "Find symbol references",
       },
       ["<LEADER>lr"] = {
-        function ()
+        function()
           require("nvchad_ui.renamer").open()
         end,
-        "Rename symbol"
+        "Rename symbol",
       },
       ["<LEADER>lh"] = {
-        function ()
+        function()
           vim.lsp.buf.hover()
         end,
-        "Hover symbol"
+        "Hover symbol",
       },
       ["<LEADER>li"] = {
-        function ()
+        function()
           vim.lsp.buf.incoming_calls()
         end,
-        "List calls of the symbol"
+        "List calls of the symbol",
       },
       ["<LEADER>lo"] = {
-        function ()
+        function()
           vim.lsp.buf.incoming_calls()
         end,
-        "List symbols called by the selected symbol"
+        "List symbols called by the selected symbol",
       },
       ["<LEADER>lj"] = {
-        function ()
+        function()
           vim.diagnostic.goto_next()
         end,
-        "Go to next LSP diagnostic"
+        "Go to next LSP diagnostic",
       },
       ["<LEADER>lk"] = {
-        function ()
+        function()
           vim.diagnostic.goto_prev()
         end,
-        "Go to previous LSP diagnostic"
+        "Go to previous LSP diagnostic",
       },
-    }
-  }
+    },
+  },
 }

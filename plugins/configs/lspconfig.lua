@@ -1,5 +1,7 @@
 local present, lspconfig = pcall(require, "lspconfig")
 
+local utils = require "core.utils"
+
 if not present then
   return
 end
@@ -7,6 +9,12 @@ end
 local lsp_augroup = vim.api.nvim_create_augroup("lsp", { clear = true })
 
 local on_attach_callback = function(client, bufnr)
+  utils.load_mappings("lspconfig", { buffer = bufnr })
+
+  if true == client.server_capabilities.signatureHelpProvider then
+    require("nvchad_ui.signature").setup(client)
+  end
+
   vim.api.nvim_clear_autocmds { group = lsp_augroup, buffer = bufnr }
   if true == client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
