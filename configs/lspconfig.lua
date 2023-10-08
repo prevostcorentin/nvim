@@ -56,6 +56,7 @@ lspconfig.ansiblels.setup {
 lspconfig.bashls.setup { on_attach = on_configure_client_buffer }
 lspconfig.dockerls.setup { on_attach = on_configure_client_buffer }
 lspconfig.jsonls.setup { on_attach = on_configure_client_buffer }
+lspconfig.phpactor.setup { on_attach = on_configure_client_buffer }
 lspconfig.pyright.setup {
   on_attach = function(client, bufnr)
     on_configure_client_buffer(client, bufnr)

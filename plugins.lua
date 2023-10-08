@@ -5,6 +5,8 @@ return {
 
   { "prevostcorentin/nvim-yawn", dir="/home/hrn/Sources/nvim-yawn", disable=false },
 
+  { "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
+
   { "tpope/vim-fugitive",
     config = function()
       require "custom.configs.fugitive"
