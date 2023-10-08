@@ -4,11 +4,11 @@ local M = {}
 
 M.ui = {
   theme = "gruvbox",
-  theme_toggle = { "ayu-light", "gruvbox" },
+  theme_toggle = { "gruvbox_light", "gruvbox" },
 }
 
 M.mappings = require "custom.mappings"
 ---@diagnostic disable-next-line: different-requires
-M.plugins = require "custom.plugins"
+M.plugins = "custom.plugins"
 
 return M
