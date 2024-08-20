@@ -26,10 +26,11 @@ local on_configure_client_buffer = function(client, bufnr)
     callback = vim.lsp.buf.clear_references,
     group = lsp_augroup,
   })
-  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    callback = vim.diagnostic.setloclist,
-    group = lsp_augroup,
-  })
+  -- Show errors and warning list after a file save
+  -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  --   callback = vim.diagnostic.setloclist,
+  --   group = lsp_augroup,
+  -- })
 end
 
 lspconfig.ansiblels.setup {
@@ -54,7 +55,7 @@ lspconfig.ansiblels.setup {
   },
 }
 lspconfig.bashls.setup { on_attach = on_configure_client_buffer }
-lspconfig.dockerls.setup { on_attach = on_configure_client_buffer }
+lspconfig.dockerls.setup { }
 lspconfig.jsonls.setup { on_attach = on_configure_client_buffer }
 lspconfig.phpactor.setup { on_attach = on_configure_client_buffer }
 lspconfig.pyright.setup {
@@ -63,7 +64,7 @@ lspconfig.pyright.setup {
     if yawn.python.has_venv() then
       client.config.settings.python.pythonPath = yawn.python.find_interpreter()
       client.config.settings.python.venvPath = yawn.python.find_venv()
-      client.notify "workspace/didChangeConfiguration"
+      client.notify "workspace/configuration"
     end
   end,
   settings = {
@@ -77,4 +78,4 @@ lspconfig.pyright.setup {
     },
   },
 }
-lspconfig.yamlls.setup { on_attach = on_configure_client_buffer }
+lspconfig.yamlls.setup { }
