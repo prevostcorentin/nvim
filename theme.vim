@@ -1,0 +1,2 @@
+""" colorscheme dayfox
+colorscheme nightfox
