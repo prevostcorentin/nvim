@@ -104,6 +104,7 @@ nnoremap <leader>b :Telescope buffers theme=ivy<cr>
 """ LSP {{{
 nnoremap <leader>lr :Telescope lsp_references theme=cursor<cr>
 nnoremap <leader>ld :Telescope diagnostics theme=ivy<cr>
+nnoremap <leader>ls :Telescope lsp_document_symbols theme=dropdown<cr>
 nnoremap <leader>li :Telescope lsp_incoming_calls theme=cursor<cr>
 nnoremap <leader>lo :Telescope lsp_outgoing_calls theme=cursor<cr>
 """ }}}
