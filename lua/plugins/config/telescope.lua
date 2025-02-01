@@ -1,5 +1,8 @@
 require('telescope').setup {
     extensions = {
+        ['ui-select'] = {
+            require('telescope.themes').get_cursor { }
+        },
         fzf = {
             fuzzy = true,
             override_generic_sorter = true,
@@ -14,14 +17,15 @@ require('telescope').setup {
     pickers = {
         find_files = {
             find_command = {
-                "fd",
-                "--type",
-                "file",
-                "--hidden",
-                "--strip-cwd-prefix"
+                'fd',
+                '--type',
+                'file',
+                '--hidden',
+                '--strip-cwd-prefix'
             }
         }
     }
 }
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('ui-select')

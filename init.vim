@@ -1,4 +1,4 @@
-""" Leader keys {{{
+j"" Leader keys {{{
 let mapleader=" "
 let maplocalleader=";"
 """ }}}
@@ -56,6 +56,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <leader>t :call SpawnTerminal()<cr>
+nnoremap <leader>r :lua vim.lsp.buf.rename()<cr>
 """ }}}
 """ Insert mode {{{
 inoremap jk <ESC>
@@ -107,6 +108,8 @@ nnoremap <leader>ld :Telescope diagnostics theme=ivy<cr>
 nnoremap <leader>ls :Telescope lsp_document_symbols theme=dropdown<cr>
 nnoremap <leader>li :Telescope lsp_incoming_calls theme=cursor<cr>
 nnoremap <leader>lo :Telescope lsp_outgoing_calls theme=cursor<cr>
+nnoremap <leader>lc :lua vim.lsp.buf.code_action()<cr>
+nnoremap <leader>lr :lua vim.lsp.buf.rename()<cr>
 """ }}}
 """ Git {{{
 nnoremap <leader>gb :Telescope git_branches theme=ivy<cr>
