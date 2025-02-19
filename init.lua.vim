@@ -24,5 +24,6 @@ require("plugins.config.cmp")
 require("plugins.config.lualine")
 require("plugins.config.telescope")
 require("plugins.config.treesitter")
+require("plugins.config.dap")
 
 EOF
