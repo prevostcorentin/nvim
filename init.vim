@@ -46,7 +46,7 @@ nnoremap <leader>q :call DetachClient()<CR>
 nnoremap <silent>! :w<cr>:noh<cr>
 nnoremap L $ 
 nnoremap H 0
-nnoremap I 0wi
+nnoremap I 0i
 nnoremap A $a
 nnoremap <C-s>l :rightbelow vnew<cr>
 nnoremap <C-s>h :leftabove vnew<cr>
