@@ -73,10 +73,7 @@ inoremap <C-s>k <esc>:leftabove new<cr>
 inoremap <C-V> <esc>"+p
 """ }}}
 """ Visual mode {{{
-vnoremap jk <esc>
-vnoremap jK <esc>
 vnoremap JK <esc>
-vnoremap Jk <esc>
 vnoremap <C-c> "+y
 vnoremap <C-v> "+p
 """ }}}
