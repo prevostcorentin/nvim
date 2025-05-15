@@ -52,20 +52,12 @@ nnoremap <C-s>l :rightbelow vnew<cr>
 nnoremap <C-s>h :leftabove vnew<cr>
 nnoremap <C-s>j :rightbelow new<cr>
 nnoremap <C-s>k :leftabove new<cr>
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
 """ }}}
 """ Insert mode {{{
 inoremap jk <esc>
 inoremap jK <esc>
 inoremap JK <esc>
 inoremap Jk <esc>
-inoremap <C-l> <C-w>l
-inoremap <C-h> <C-w>h
-inoremap <C-k> <C-w>k
-inoremap <C-j> <C-w>j
 inoremap <C-s>l <esc>:rightbelow vnew<cr>
 inoremap <C-s>h <esc>:leftabove vnew<cr>
 inoremap <C-s>j <esc>:rightbelow new<cr>
