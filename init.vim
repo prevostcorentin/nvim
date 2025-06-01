@@ -4,7 +4,7 @@ function DetachClient()
 endfunc
 
 """ Options {{{
-""" Text seach {{{
+""" Text search {{{
 set showmatch
 set ignorecase
 set hlsearch
@@ -24,13 +24,17 @@ set number
 set relativenumber
 set cursorline
 set cc="120"
+set nowrap
 """ set ttyfast
 """ }}}
 """ Clipboard {{{
 set clipboard+="unnamedplus"
 """ }}}
 """ Auto-completion {{{
-set wildmode="longest,list"
+set wildmenu
+set wildchar=<Tab>
+set wildmode=lastused:full
+set completeopt=menuone,menu,preview,popup,fuzzy,noselect
 """ }}}
 """ Vim files location {{{
 set nobackup
@@ -43,7 +47,7 @@ set directory=/home/hrn/.cache/nvim,/tmp,.
 set mouse=a
 let mapleader=" "
 nnoremap <leader>q :call DetachClient()<CR>
-nnoremap <silent>! :w<cr>:noh<cr>
+nnoremap <silent>! :noh<cr>:w<cr>
 nnoremap L $ 
 nnoremap H 0
 nnoremap I 0i
@@ -76,3 +80,6 @@ tnoremap JK <C-\><C-N>
 tnoremap Jk <C-\><C-N>
 """ }}}
 """ }}}
+
+colorscheme catppuccin
+set background=light
