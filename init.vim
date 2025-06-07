@@ -56,6 +56,7 @@ nnoremap <C-s>l :rightbelow vnew<cr>
 nnoremap <C-s>h :leftabove vnew<cr>
 nnoremap <C-s>j :rightbelow new<cr>
 nnoremap <C-s>k :leftabove new<cr>
+nnoremap <leader>b :buffers<cr>:b
 """ }}}
 """ Insert mode {{{
 inoremap jk <esc>
@@ -79,6 +80,25 @@ tnoremap jK <C-\><C-N>
 tnoremap JK <C-\><C-N>
 tnoremap Jk <C-\><C-N>
 """ }}}
+""" }}}
+
+""" netrw {{{
+let g:netrw_keepdir=0
+let g:netrw_banner=0
+let g:netrw_fastbrowse=2
+let g:netrw_browse_split=4
+let g:netrw_http_cmd="elinks"
+let g:netrw_http_xcmd="-source >"
+let g:netrw_list_hide='^\..*'
+let g:netrw_menu=0
+let g:netrw_use_errorwindow=3
+
+""" netrw immediately activate when using nvim without any filenames,
+""" showing the current directory
+augroup VimStartup
+    au!
+	au VimEnter * if expand("%") == "" | e . | endif
+augroup END
 """ }}}
 
 colorscheme catppuccin
