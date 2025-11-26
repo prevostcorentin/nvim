@@ -38,7 +38,7 @@ set completeopt=menuone,menu,preview,popup,fuzzy,noselect
 """ }}}
 """ Vim files location {{{
 set nobackup
-set directory=/home/hrn/.cache/nvim,/tmp,.
+set directory=$HOME/.cache/nvim//,/tmp//,$HOME/AppData/Local/nvim-data/cache//,.
 """ }}}
 """ }}}
 
@@ -82,6 +82,35 @@ tnoremap Jk <C-\><C-N>
 """ }}}
 """ }}}
 
+""" LSP {{{
+nnoremap grn <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap gra <cmd>lua vim.lsp.buf.code_action()<cr>
+nnoremap grr <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap gri <cmd>lua vim.lsp.buf.implementation()<cr>
+nnoremap grt <cmd>lua vim.lsp.buf.type_definition()<cr>
+nnoremap gO  <cmd>lua vim.lsp.buf.document_symbol()<cr>
+nnoremap grd <cmd>lua vim.diagnostic.open_float()<cr>
+
+augroup lsp_global
+    autocmd!
+    autocmd CursorHold  * lua vim.diagnostic.open_float()
+    autocmd CursorHoldI * lua vim.diagnostic.open_float()
+augroup END
+""" }}}
+
+""" Operator-pending mappings {{{
+onoremap p i(
+onoremap b /return<cr>
+""" }}}
+
+""" Commenting lines {{{
+augroup filetypes
+    autocmd!
+    autocmd FileType python nnoremap <leader>c I#<esc>
+    autocmd FileType go nnoremap <leader>c I//<esc>
+augroup END
+"""
+
 """ netrw {{{
 let g:netrw_keepdir=0
 let g:netrw_banner=0
@@ -102,4 +131,4 @@ augroup END
 """ }}}
 
 colorscheme catppuccin
-set background=light
+""" set background=dark
