@@ -18,7 +18,7 @@ end
 
 function _G.locate_configuration()
     local command = vim.api.nvim_parse_cmd("echo stdpath('config')", {})
-    return vim.api.nvim_cmd(command, {["output"]=true})
+    return vim.api.nvim_cmd(command, { ["output"] = true })
 end
 
 function _G.locate_plugins()
