@@ -18,6 +18,7 @@ set shiftwidth=4
 set autoindent
 """ }}}
 """ User interface {{{
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=3
 set mouse=a
 set number
@@ -73,6 +74,7 @@ inoremap <C-V> <esc>"+p
 vnoremap JK <esc>
 vnoremap <C-c> "+y
 vnoremap <C-v> "+p
+vnoremap L $h
 """ }}}
 """ Terminal mode {{{
 tnoremap jk <C-\><C-N>
@@ -98,9 +100,20 @@ augroup lsp_global
 augroup END
 """ }}}
 
-""" Operator-pending mappings {{{
-onoremap p i(
-onoremap b /return<cr>
+""" Debug Adapter Protocol {{{
+nnoremap <leader>dl <cmd>LoadDAP<cr>
+nnoremap <leader>dc <cmd>DapContinue<cr>
+nnoremap <leader>dt <cmd>DapTerminate<cr>
+nnoremap <leader>dp <cmd>DapTerminate<cr>
+nnoremap <leader>dr <cmd>DapToggleRepl<cr>
+nnoremap <leader>db <cmd>DapToggleBreakpoint<cr>
+nnoremap <leader>dB <cmd>DapClearBreakpoints<cr>
+nnoremap <leader>do <cmd>DapStepOut<cr>
+nnoremap <leader>dO <cmd>DapStepOver<cr>
+nnoremap <leader>di <cmd>DapStepInto<cr>
+nnoremap <leader>di <cmd>DapStepInto<cr>
+nnoremap <leader>df <cmd>DapShowFramesFloatingWindow<cr>
+nnoremap <leader>ds <cmd>DapShowScopesSidebar<cr>
 """ }}}
 
 """ Commenting lines {{{
@@ -131,4 +144,3 @@ augroup END
 """ }}}
 
 colorscheme catppuccin
-""" set background=dark
